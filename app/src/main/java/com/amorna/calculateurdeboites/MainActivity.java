@@ -37,12 +37,23 @@ public class MainActivity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                double j= Double.parseDouble(String.valueOf(jour.getText()));
-                int p=Integer.parseInt(String.valueOf(periode.getText()));
-                int c=Integer.parseInt(String.valueOf(contenance.getText()));
-                double nb1=j*p/c;
-                int nb= (int) Math.ceil(nb1);
-                nombre.setText(String.valueOf(nb)+" boîtes");
+                if(jour.length()==0){
+                  jour.setError("Entrer le nombre d'unités par jour");
+                } else if (periode.length()==0) {
+                    periode.setError("Entrer la periode en jours");
+                } else if (contenance.length()==0) {
+                    contenance.setError("Entrer la contenance de la boîte");
+                }
+                else {
+
+
+                    double j = Double.parseDouble(String.valueOf(jour.getText()));
+                    int p = Integer.parseInt(String.valueOf(periode.getText()));
+                    int c = Integer.parseInt(String.valueOf(contenance.getText()));
+                    double nb1 = j * p / c;
+                    int nb = (int) Math.ceil(nb1);
+                    nombre.setText(String.valueOf(nb) + " boîtes");
+                }
 
             }
         });
